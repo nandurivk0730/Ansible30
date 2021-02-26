@@ -1,0 +1,18 @@
+- name: Install the HTTPD
+  package:
+     name: apache2
+     state: present
+- name: Uodate the apche conf
+  template:
+      src: ports.conf.j2
+      dest: /home/kiran/project1/ports.conf
+  notify:
+        Restart
+
+- name: Copy the web content
+  copy:  
+     src: index.html
+     dest: /var/www/html/
+
+
+

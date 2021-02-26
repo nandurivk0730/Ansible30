@@ -1,0 +1,87 @@
+---
+- name: this is my snippet
+  hosts: all
+  vars:
+   apache_port: 9091
+  become: yes
+  
+  tasks:
+  - name: Install the HTTPD
+    package:
+     name: apache2
+     state: present
+     
+  - name: Uodate the apche conf
+    template:
+      src: ports.conf.j2
+      dest: /home/kiran/project1/ports.conf   
+    notify:
+        Restart the Service
+   
+  handlers:     
+   - name: Restart the  Service                           
+     service:
+          name: apache2
+          state: restarted
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
